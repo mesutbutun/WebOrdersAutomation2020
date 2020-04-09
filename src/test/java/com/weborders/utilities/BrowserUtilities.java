@@ -7,11 +7,13 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 public class BrowserUtilities {
     /**
      * Pause test for some time
@@ -25,6 +27,7 @@ public class BrowserUtilities {
             e.printStackTrace();
         }
     }
+
     /**
      * @param elements represents collection of WebElements
      * @return collection of strings
@@ -38,6 +41,7 @@ public class BrowserUtilities {
         }
         return textValues;
     }
+
     /**
      * waits for backgrounds processes on the browser to complete
      *
@@ -52,6 +56,7 @@ public class BrowserUtilities {
             error.printStackTrace();
         }
     }
+
     /**
      * Clicks on an element using JavaScript
      *
@@ -61,6 +66,7 @@ public class BrowserUtilities {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
     }
+
     /**
      * Scroll to element using JavaScript
      *
@@ -69,6 +75,7 @@ public class BrowserUtilities {
     public static void scrollTo(WebElement element) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
     /**
      * @param name screenshot name
      * @return path to the screenshot
@@ -78,11 +85,13 @@ public class BrowserUtilities {
         name = new Date().toString().replace(" ", "_").replace(":", "-") + "_" + name;
         //where we gonna store a screenshot
         String path = "";
+
         if (System.getProperty("os.name").toLowerCase().contains("mac")) {
             path = System.getProperty("user.dir") + "/test-output/screenshots/" + name + ".png";
         } else {
             path = System.getProperty("user.dir") + "\\test-output\\screenshots\\" + name + ".png";
         }
+
         System.out.println("OS name: " + System.getProperty("os.name"));
         System.out.println("Screenshot is here: " + path);
         //since our reference type is a WebDriver
